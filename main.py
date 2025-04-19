@@ -3,10 +3,8 @@ from telebot import TeleBot
 from config import token
 import functional as fn
 from users import registred
-from embeds import bcmd,lb_embed
 import mini_game
-import bullshit
-import global_warming 
+
 
 
 bot = TeleBot(token)
@@ -103,49 +101,6 @@ def sleep(message) -> None:
 # @bot.message_handler(commands=['shop'])
 # def shop(message, item: str) -> None:
 #     mini_game.shop(message=message, bot=bot, item=item)
-#     fn.plus_xp(message=message)
-
-
-@bot.message_handler(commands=['cmd_bullshit'])
-def cmd_bullshit(message) -> None:
-    bullshit.cmd(message=message, bot=bot)
-
-@bot.message_handler(commands=['hi'])
-def hi(message) -> None:
-    bullshit.hi(message=message, bot=bot)
-
-@bot.message_handler(commands=['his'])
-def his(message) -> None:
-    bullshit.his(message=message, bot=bot)
-
-@bot.message_handler(commands=['hist'])
-def hist(message) -> None:
-    bullshit.hist(message=message, bot=bot)
-
-# @bot.message_handler(commands=['pet'])
-# def pet(message) -> None:
-#     bullshit.pet(message=message)
-
-
-@bot.message_handler(commands=['cmd_warming'])
-def cmd_warming(message) -> None:
-    global_warming.cmd(message=message, bot=bot)
-
-@bot.message_handler(commands=['about'])
-def about(message) -> None:
-    global_warming.about(message=message, bot=bot)
-
-@bot.message_handler(commands=['reasons'])
-def reasons(message) -> None:
-    global_warming.reasons(message=message, bot=bot)
-
-@bot.message_handler(commands=['how_help'])
-def how_help(message) -> None:
-    global_warming.how_help(message=message, bot=bot)
-
-# @bot.message_handler(commands=['quiz'])
-# def quiz(message) -> None:
-#     global_warming.quiz(message=message, bot=bot)
 #     fn.plus_xp(message=message)
 
 
