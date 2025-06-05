@@ -13,6 +13,7 @@ class DB_Manager:
                 CREATE TABLE IF NOT EXISTS users(
                     id INTEGER PRIMARY KEY NOT NULL,
                     pet_id INTEGER,
+                    tag TEXT,
                     username TEXT NOT NULL,
                     nickname VARCHAR(35),
                     status_id TEXT NOT NULL,
@@ -54,7 +55,8 @@ class DB_Manager:
 
     def new_user(self,
                 user_id: int,
-                pet_id: int, 
+                pet_id: int | str, 
+                tag: str,
                 username: str, 
                 nickname: str, 
                 status_id: int, 
@@ -67,7 +69,7 @@ class DB_Manager:
         with con:
             con.execute(f'''
                 INSERT INTO users VALUES
-                    ({user_id},{pet_id},'{username}',{nickname},{status_id},{coins},{quiz_record},'{register_date}',{xp})
+                    ({user_id},{pet_id},'{tag}','{username}',{nickname},{status_id},{coins},{quiz_record},'{register_date}',{xp})
             ''')
             con.commit()
 
@@ -121,11 +123,11 @@ class DB_Manager:
         return 'успешно удалено'
 
 
-    def read(self, table: str, PK: int, *columns: tuple):
+    def read(self, table: str, PK: int, *columns: tuple | str):
         con = sqlite3.connect(self.database)
         with con:
             cur = con.cursor()
-            return cur.execute(f'SELECT {','.join(columns)} FROM {table} WHERE id = {PK}').fetchall()[0]
+            return cur.execute(f'SELECT {','.join(columns)} FROM {table} WHERE id = {PK}').fetchall()[0] # type: ignore
 
 
     def get_PK(self, table: str, col_name: str, col_content: int | str):
