@@ -77,8 +77,8 @@ class Enemy:
 
 
     def __repr__(self) -> str:
-        return (f'<Здоровье врага {self.hp}, '
-                f'сила врага {self.str}, защита врага {self.defense}>')
+        return (f'<Здоровье врага: {self.hp},'
+                f'сила врага: {self.str}, защита врага: {self.defense}>')
 
 
     def __bool__(self) -> bool:
